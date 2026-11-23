@@ -1,0 +1,11 @@
+# Generated pipeline output (rebuild with: python run_all.py)
+out/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Editor / OS
+.vscode/
+.DS_Store
