@@ -39,10 +39,9 @@ import csv
 import hashlib
 import re
 from collections import Counter
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "out"
+from common import OUT, FIELDS
+
 
 NICK_CANON = {
     "bob": "robert", "bill": "william", "rick": "richard", "jim": "james",
@@ -61,9 +60,6 @@ COMMON_DOMAINS = ["gmail.com", "yahoo.com", "outlook.com", "icloud.com",
                   "aol.com", "comcast.net", "hotmail.com"]
 DISPOSABLE = ["mailinator.com", "guerrillamail.com", "10minutemail.com",
               "tempmail.net", "throwaway.email"]
-
-FIELDS = ["given_name", "surname", "dob", "postal", "email", "email_hash",
-          "phone", "ip", "device_id", "fpc", "tpc", "shared_id"]
 
 
 def sha(s):

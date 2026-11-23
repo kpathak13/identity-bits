@@ -27,28 +27,8 @@ Pruning is then applied to every strategy. It only ever REMOVES edges.
 import csv
 import math
 from collections import defaultdict, Counter
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "out"
-MAX_PLAUSIBLE = 12          # more records than this for one person is suspect
-
-
-class DSU:
-    def __init__(self):
-        self.p = {}
-
-    def find(self, x):
-        self.p.setdefault(x, x)
-        while self.p[x] != x:
-            self.p[x] = self.p[self.p[x]]
-            x = self.p[x]
-        return x
-
-    def union(self, a, b):
-        ra, rb = self.find(a), self.find(b)
-        if ra != rb:
-            self.p[ra] = rb
+from common import OUT, MAX_PLAUSIBLE, DSU, c2
 
 
 def components(node_ids, edges):
@@ -97,10 +77,6 @@ def prune(node_ids, edges, max_size=MAX_PLAUSIBLE):
         size[d.find(a)] = size[ra] + size[rb]
         kept.append((a, b, w))
     return kept, dropped
-
-
-def c2(n):
-    return n * (n - 1) // 2
 
 
 def stats(comps, truth):

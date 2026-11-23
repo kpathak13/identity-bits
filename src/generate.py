@@ -33,10 +33,9 @@ import hashlib
 import os
 import random
 import string
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+from common import DATA, OUT
+
 
 NICKNAMES = {
     "Robert": "Bob", "William": "Bill", "Richard": "Rick", "James": "Jim",
@@ -318,7 +317,7 @@ def main():
                     help="number of distinct people to simulate")
     a = ap.parse_args()
     records, truth, stats = build(n_people=a.people)
-    out = ROOT / "out"
+    out = OUT
     out.mkdir(exist_ok=True)
     with open(out / "records_raw.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDNAMES)

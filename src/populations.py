@@ -22,11 +22,8 @@ could be run:
 import csv
 import math
 from collections import Counter
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
-OUT = ROOT / "out"
+from common import DATA, OUT
 
 
 # ---------------------------------------------------------------- 1

@@ -20,31 +20,8 @@ produced the labels.
 import csv
 import math
 from collections import defaultdict, Counter
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "out"
-
-
-class DSU:
-    def __init__(self):
-        self.p = {}
-
-    def find(self, x):
-        self.p.setdefault(x, x)
-        while self.p[x] != x:
-            self.p[x] = self.p[self.p[x]]
-            x = self.p[x]
-        return x
-
-    def union(self, a, b):
-        ra, rb = self.find(a), self.find(b)
-        if ra != rb:
-            self.p[ra] = rb
-
-
-def c2(n):
-    return n * (n - 1) // 2
+from common import OUT, DSU, c2
 
 
 def close(node_ids, edges):

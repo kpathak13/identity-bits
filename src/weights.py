@@ -30,14 +30,9 @@ import math
 import os
 import random
 from collections import Counter
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "out"
+from common import OUT, FIELDS, c2
 
-OFFLINE = ["given_name", "surname", "dob", "postal", "email", "email_hash", "phone"]
-DIGITAL = ["ip", "device_id", "fpc", "tpc", "shared_id"]
-FIELDS = OFFLINE + DIGITAL
 
 # what the field actually identifies, regardless of how many bits it carries
 ENTITY = {
@@ -53,10 +48,6 @@ PAIRS_TO_CHECK = [(a, b) for i, a in enumerate(FIELDS) for b in FIELDS[i + 1:]]
 NOTABLE = {("email", "email_hash"), ("email", "shared_id"),
            ("postal", "ip"), ("email", "phone"),
            ("surname", "postal"), ("dob", "surname"), ("device_id", "fpc")}
-
-
-def c2(n):
-    return n * (n - 1) // 2
 
 
 def exact_mu(records, truth, field):

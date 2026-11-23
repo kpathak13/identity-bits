@@ -219,6 +219,9 @@ removes k−1 and reproduces the measured joint weights.
 | 7 | `src/groundtruth.py` | the two claims above, tested |
 | 8 | `src/populations.py` | the post's worked example, and one hash across five populations |
 
+`src/common.py` holds what the stages share: paths, the field list, the
+union-find class and the pair-count helper.
+
 ---
 
 ## Result 7 — same hash, different population, different evidence

@@ -26,10 +26,9 @@ import csv
 import math
 from collections import defaultdict
 from itertools import combinations
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "out"
+from common import OUT
+
 
 MAX_BLOCK = 60          # a block bigger than this is a defect, not a signal
 
